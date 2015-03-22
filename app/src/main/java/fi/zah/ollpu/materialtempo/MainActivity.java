@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -27,6 +26,8 @@ public class MainActivity extends ActionBarActivity {
 
     float currentBPM;
     float lastBPM = 0;
+
+    BPMInfo bpmInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,12 @@ public class MainActivity extends ActionBarActivity {
             }
 
         };
+
+
+        bpmInfo = new BPMInfo(
+                (TextView) findViewById(R.id.info_title),
+                (TextView) findViewById(R.id.info)
+        );
 
     }
 
@@ -102,6 +109,8 @@ public class MainActivity extends ActionBarActivity {
 
     private void publishLastBPM() {
         avg_display.setText("Average: " + String.format("%.1f", lastBPM) + " BPM");
+        bpmInfo.updateBPM(lastBPM);
+
     }
 
     @Override
