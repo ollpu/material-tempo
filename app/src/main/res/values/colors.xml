@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="primary" type="color">#FF33CC33</item>
-    <item name="primary_dark" type="color">#FF009933</item>
-    <item name="accent" type="color">#FF29A329</item>
+    <item name="primary" type="color">#8BC34A</item>
+    <item name="primary_dark" type="color">#689F38</item>
+    <item name="accent" type="color">#4CAF50</item>
+    <item name="textPrimary" type="color">#FFFFFF</item>
+    <item name="text" type="color">#212121</item>
+    <item name="textSecondary" type="color">#727272</item>
 </resources>

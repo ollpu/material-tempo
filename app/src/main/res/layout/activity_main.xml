@@ -43,6 +43,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 card_view:cardCornerRadius="4dp"
+                card_view:cardElevation="10dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true">
 
@@ -58,13 +59,13 @@
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tap Here"
+                        android:text="@string/tap_here"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:id="@+id/tap"
                         android:layout_gravity="center"
                         android:longClickable="true"
                         android:ellipsize="start"
-                        android:textSize="52dp"
+                        android:textSize="52sp"
                         android:onClick="updateBPM" />
 
                     <ProgressBar
@@ -81,7 +82,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Average: - BPM"
+                        android:text="@string/average_bpm"
                         android:id="@+id/avg_display"
                         android:layout_gravity="center_horizontal|bottom"
                         android:paddingBottom="16dp"/>
@@ -90,7 +91,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="- BPM"
+                        android:text="@string/undef_bpm"
                         android:id="@+id/display"
                         android:layout_marginTop="0dp"
                         android:layout_gravity="center_horizontal|top"
@@ -116,7 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="About - BPM"
+                    android:text="@string/about_bpm"
                     android:id="@+id/info_title"
                     android:layout_marginTop="0dp"
                     android:layout_gravity="center_horizontal|top"
@@ -125,7 +126,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Italian tempo marking: "
+                    android:text="@string/italian_tempo"
                     android:id="@+id/info"
                     android:layout_gravity="center_horizontal|top"
                     android:paddingTop="2dp"

@@ -1,5 +1,6 @@
 package fi.zah.ollpu.materialtempo;
 
+import android.content.res.Resources;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,17 +13,24 @@ import java.util.ArrayList;
 public class BPMInfo {
 
     TextView title, text;
+    MainActivity parent;
 
-    BPMInfo(TextView title, TextView text) {
+    BPMInfo(TextView title, TextView text, MainActivity parent) {
         this.title = title;
         this.text = text;
+        this.parent = parent;
     }
 
     float myBPM;
 
     public void updateBPM(float newBPM) {
+        Resources res = parent.getResources();
         myBPM = newBPM;
-        title.setText("About " + String.format("%.1f", myBPM) + " BPM");
+        title.setText(
+                res.getText(R.string.about_)
+                + String.format("%.1f", myBPM)
+                + res.getText(R.string._bpm)
+        );
 
         Italian[] italians = Italian.lookup(Math.round(myBPM));
         String italianNames = "";
@@ -30,7 +38,13 @@ public class BPMInfo {
             italianNames = italianNames + (italianNames.equals("") ? "" : ", ")
                     + italian.toString().replace("_", " ");
         }
-        text.setText("Italian tempo marking" + (italians.length > 1 ? "s: " : ": ") + italianNames);
+        text.setText(
+                (italians.length > 1
+                        ? res.getText(R.string.italian_tempo_plural)
+                        : res.getText(R.string.italian_tempo)
+                )
+                + italianNames
+        );
     }
 
 

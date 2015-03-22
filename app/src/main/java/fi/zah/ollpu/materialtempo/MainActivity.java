@@ -2,6 +2,7 @@ package fi.zah.ollpu.materialtempo;
 
 import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
+import android.content.res.Resources;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
@@ -56,7 +57,8 @@ public class MainActivity extends ActionBarActivity {
 
         bpmInfo = new BPMInfo(
                 (TextView) findViewById(R.id.info_title),
-                (TextView) findViewById(R.id.info)
+                (TextView) findViewById(R.id.info),
+                this
         );
 
     }
@@ -104,11 +106,17 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void publishBPM() {
-        display.setText(String.format("%.1f", currentBPM) + " BPM");
+        Resources res = getResources();
+        display.setText(String.format("%.1f", currentBPM) + res.getText(R.string._bpm));
     }
 
     private void publishLastBPM() {
-        avg_display.setText("Average: " + String.format("%.1f", lastBPM) + " BPM");
+        Resources res = getResources();
+        avg_display.setText(
+                res.getText(R.string.average_)
+                + String.format("%.1f", lastBPM)
+                + res.getText(R.string._bpm)
+        );
         bpmInfo.updateBPM(lastBPM);
 
     }
