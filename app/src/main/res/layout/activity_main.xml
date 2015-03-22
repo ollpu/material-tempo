@@ -120,7 +120,7 @@
                     android:id="@+id/info_title"
                     android:layout_marginTop="0dp"
                     android:layout_gravity="center_horizontal|top"
-                    android:paddingTop="20dp"/>
+                    android:paddingTop="16dp"/>
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -131,7 +131,7 @@
                     android:paddingTop="2dp"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
-                    android:layout_marginTop="52dp"
+                    android:layout_marginTop="48dp"
                     android:maxLines="4"
                     android:lines="4"
                     android:layout_alignParentBottom="true"
