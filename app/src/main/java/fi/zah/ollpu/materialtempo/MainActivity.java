@@ -140,6 +140,29 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
 
+        if (id == R.id.action_display_italians) {
+            String BPM = getResources().getText(R.string._bpm).toString();
+
+            BPMInfo.Italian[] italians = BPMInfo.Italian.values();
+            String list = "";
+
+            for (BPMInfo.Italian i : italians) {
+                String start, end;
+                if(i.start == Integer.MIN_VALUE) start = "-∞" + BPM;
+                    else start = i.start + BPM;
+
+                if(i.end == Integer.MAX_VALUE) end = "∞" + BPM;
+                    else end = i.end + BPM;
+
+                list = list + "\n" + i.toString() + ": " + start + " — " + end;
+            }
+            new AlertDialog.Builder(this)
+                    .setTitle(getResources().getText(R.string.list_italians))
+                    .setMessage(list)
+                    .show()
+            ;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

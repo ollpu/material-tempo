@@ -48,7 +48,7 @@ public class BPMInfo {
     }
 
 
-    public enum Italian {
+    public static enum Italian {
 
         Unknown(Integer.MIN_VALUE, -1),
         Larghissimo(0, 24),
@@ -73,7 +73,7 @@ public class BPMInfo {
         Prestissimo(200, Integer.MAX_VALUE);
 
 
-        private final int start, end;
+        public final int start, end;
 
         Italian(int start, int end) {
             this.start = start;

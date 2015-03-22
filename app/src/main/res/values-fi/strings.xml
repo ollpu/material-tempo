@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Material Tempo</string>
+    <string name="about_">Tietoa:\u0020</string>
+    <string name="about_bpm">Tietoa: - BPM</string>
+    <string name="action_settings">Asetukset</string>
+    <string name="average_">Keskiarvo:\u0020</string>
+    <string name="average_bpm">Keskiarvo: - BPM</string>
+    <string name="italian_tempo">Italialainen tempomerkki:\u0020</string>
+    <string name="italian_tempo_plural">Italialaiset tempomerkit:\u0020</string>
+    <string name="italian_tempos">Italialaiset tempomerkit</string>
+    <string name="list_italians">Lista Italialaisista tempomerkeistä</string>
+    <string name="tap_here">Napauta</string>
+    <string name="undef_bpm">- BPM</string>
+    <string name="_bpm">\u0020BPM</string>
+</resources>

@@ -8,6 +8,11 @@
     <string name="italian_tempo">Italian tempo marking:\u0020</string>
     <string name="italian_tempo_plural">Italian tempo markings:\u0020</string>
 
+    <string name="italian_tempos">Italian tempo markings</string>
+
+
+    <string name="list_italians">List of Italian tempo markings</string>
+
     <string name="about_">About\u0020</string>
     <string name="_bpm">\u0020BPM</string>
 
