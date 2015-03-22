@@ -28,8 +28,8 @@ public class FavoriteBPM {
     }
 
 
-    public static FavoriteBPM findMatch(float of, Context context) {
+    /*public static FavoriteBPM findMatch(float of, Context context) {
         int ofSimple = simplify(of);
 
-    }
+    }*/
 }

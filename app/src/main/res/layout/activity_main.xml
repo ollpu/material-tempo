@@ -140,15 +140,12 @@
 
 
                 <CheckBox
-                    android:scaleX="0.4"
-                    android:scaleY="0.4"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:id="@+id/favorite"
                     android:layout_gravity="end|bottom"
-                    android:layout_marginBottom="-21dp"
-                    android:layout_marginEnd="-21dp"
-
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
                     android:button="@drawable/btn_star_material"
                     android:checked="false" />
 
