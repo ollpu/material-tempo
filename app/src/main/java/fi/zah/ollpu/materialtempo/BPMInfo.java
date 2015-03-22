@@ -3,6 +3,8 @@ package fi.zah.ollpu.materialtempo;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by ollpu on 22.3.2015.
  *
@@ -21,8 +23,14 @@ public class BPMInfo {
     public void updateBPM(float newBPM) {
         myBPM = newBPM;
         title.setText("About " + String.format("%.1f", myBPM) + " BPM");
-        Italian italian = Italian.lookup(Math.round(myBPM));
-        text.setText("Italian name: " + italian.toString().replace("_", " "));
+
+        Italian[] italians = Italian.lookup(Math.round(myBPM));
+        String italianNames = "";
+        for(Italian italian : italians) {
+            italianNames = italianNames + (italianNames.equals("") ? "" : ", ")
+                    + italian.toString().replace("_", " ");
+        }
+        text.setText("Italian tempo marking" + (italians.length > 1 ? "s: " : ": ") + italianNames);
     }
 
 
@@ -58,15 +66,16 @@ public class BPMInfo {
             this.end = end;
         }
 
-        public static Italian lookup(final int BPM) {
+        public static Italian[] lookup(final int BPM) {
             final Italian[] a = Italian.values();
 
+            ArrayList<Italian> matches = new ArrayList<>();
             for(Italian i : a) {
                 if(i.start <= BPM && i.end >= BPM) {
-                    return i;
+                    matches.add(i);
                 }
             }
-            return Italian.Unknown;
+            return matches.toArray(new Italian[matches.size()]);
         }
 
 
