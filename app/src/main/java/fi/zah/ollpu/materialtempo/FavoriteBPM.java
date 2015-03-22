@@ -23,7 +23,7 @@ public class FavoriteBPM {
         simple = simplify(accurate);
     }
 
-    private int simplify(float original) {
+    private static int simplify(float original) {
         return Math.round((original - 2.5f) / 5) * 5;
     }
 
