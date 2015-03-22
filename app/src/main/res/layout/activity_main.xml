@@ -149,8 +149,7 @@
                     android:layout_marginBottom="-21dp"
                     android:layout_marginEnd="-21dp"
 
-                    android:button="@null"
-                    android:background="@drawable/btn_star_material"
+                    android:button="@drawable/btn_star_material"
                     android:checked="false" />
 
 
