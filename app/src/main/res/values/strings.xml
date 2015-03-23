@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Material Tempo</string>
 
-    //\u0020 = space (needed for leading and trailing whitespaces)
+    <!--\u0020 = space (needed for leading and trailing whitespaces)-->
     <string name="action_settings">Settings</string>
     <string name="tap_here">Tap Here</string>
 

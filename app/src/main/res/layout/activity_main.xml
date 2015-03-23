@@ -130,8 +130,8 @@
                     android:id="@+id/info"
                     android:layout_gravity="center_horizontal|top"
                     android:paddingTop="2dp"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:paddingStart="@dimen/card_padding"
+                    android:paddingEnd="@dimen/card_padding"
                     android:layout_marginTop="48dp"
                     android:maxLines="4"
                     android:lines="4"
@@ -144,9 +144,10 @@
                     android:layout_width="wrap_content"
                     android:id="@+id/favorite"
                     android:layout_gravity="end|bottom"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="@dimen/card_padding"
+                    android:layout_marginEnd="@dimen/card_padding"
                     android:button="@drawable/btn_star_material"
+                    android:elevation="20dp"
                     android:checked="false" />
 
 
