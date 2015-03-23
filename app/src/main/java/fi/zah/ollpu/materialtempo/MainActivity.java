@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +35,12 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Configure toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
         display = (TextView) findViewById(R.id.display);
         avg_display = (TextView) findViewById(R.id.avg_display);
         progressBar = (ProgressBar) findViewById(R.id.tap_progress);
@@ -136,34 +143,41 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
-        if (id == R.id.action_display_italians) {
-            String BPM = getResources().getText(R.string._bpm).toString();
+        switch(id) {
+            case R.id.action_settings:
+                return true;
 
-            BPMInfo.Italian[] italians = BPMInfo.Italian.values();
-            String list = "";
+            case R.id.action_display_italians:
+                String BPM = getResources().getText(R.string._bpm).toString();
 
-            for (BPMInfo.Italian i : italians) {
-                String start, end;
-                if(i.start == Integer.MIN_VALUE) start = "-∞" + BPM;
+                BPMInfo.Italian[] italians = BPMInfo.Italian.values();
+                String list = "";
+
+                for (BPMInfo.Italian i : italians) {
+                    String start, end;
+                    if(i.start == Integer.MIN_VALUE) start = "-∞" + BPM;
                     else start = i.start + BPM;
 
-                if(i.end == Integer.MAX_VALUE) end = "∞" + BPM;
+                    if(i.end == Integer.MAX_VALUE) end = "∞" + BPM;
                     else end = i.end + BPM;
 
-                list = list + "\n" + i.toString() + ": " + start + " — " + end;
-            }
-            new AlertDialog.Builder(this)
-                    .setTitle(getResources().getText(R.string.list_italians))
-                    .setMessage(list)
-                    .show()
-            ;
+                    list = list + "\n" + i.toString() + ": " + start + " — " + end;
+                }
+                new AlertDialog.Builder(this)
+                        .setTitle(getResources().getText(R.string.list_italians))
+                        .setMessage(list)
+                        .show()
+                ;
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
+
+
     }
 
 
