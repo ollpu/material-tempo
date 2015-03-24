@@ -14,10 +14,14 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     CharSequence Titles[];
     int NumbOfTabs;
 
+    MainActivity parent;
+
 
     // Build a Constructor and assign the passed Values to appropriate values in the class
-    public ViewPagerAdapter(FragmentManager fm,CharSequence mTitles[], int mNumbOfTabsumb) {
+    public ViewPagerAdapter(FragmentManager fm,CharSequence mTitles[], int mNumbOfTabsumb, MainActivity parent) {
         super(fm);
+
+        this.parent = parent;
 
         this.Titles = mTitles;
         this.NumbOfTabs = mNumbOfTabsumb;
@@ -30,6 +34,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         switch(position) {
             case 0:
                 TabTap tab1 = new TabTap();
+                tab1.setParent(parent);
                 return tab1;
             default:
                 return null;

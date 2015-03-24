@@ -31,7 +31,7 @@ public class MainActivity extends ActionBarActivity {
     int numTabs;
 
     private CharSequence[] getTabs() {
-        return new CharSequence[] { "Tap Tempo", "Metronome" };
+        return new CharSequence[] { "Tap Tempo" };
     }
 
 
@@ -46,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        adapter = new ViewPagerAdapter(getSupportFragmentManager(), Titles, numTabs);
+        adapter = new ViewPagerAdapter(getSupportFragmentManager(), Titles, numTabs, this);
 
         pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(adapter);

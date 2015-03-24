@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -20,8 +21,12 @@ import android.widget.TextView;
  */
 public class TabTap extends Fragment {
 
+    public void setParent(MainActivity parent) {
+        activity = parent;
+    }
+
     Context context;
-    ViewGroup container;
+    MainActivity activity;
 
     long[] taps;
     int pointer = 0;
@@ -40,17 +45,16 @@ public class TabTap extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.tab_tap,container,false);
-        try {
-            context = container.getContext();
-        } catch(NullPointerException e) {
-            e.printStackTrace();
-        }
+        return v;
+    }
 
-        this.container = container;
+    public void onActivityCreated(Bundle stuff) {
+        super.onActivityCreated(stuff);
 
-        display = (TextView) container.findViewById(R.id.display);
-        avg_display = (TextView) container.findViewById(R.id.avg_display);
-        progressBar = (ProgressBar) container.findViewById(R.id.tap_progress);
+
+        display = (TextView) getView().findViewById(R.id.display);
+        avg_display = (TextView) getView().findViewById(R.id.avg_display);
+        progressBar = (ProgressBar) getView().findViewById(R.id.tap_progress);
         taps = new long[4];
 
 
@@ -70,15 +74,27 @@ public class TabTap extends Fragment {
 
 
         bpmInfo = new BPMInfo(
-                (TextView) container.findViewById(R.id.info_title),
-                (TextView) container.findViewById(R.id.info),
+                (TextView) getView().findViewById(R.id.info_title),
+                (TextView) getView().findViewById(R.id.info),
                 this
         );
 
-        return v;
+        final Button button = (Button) getView().findViewById(R.id.tap);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                updateBPM();
+            }
+        });
     }
 
-    public void updateBPM(View view) {
+    public void onDestroyView() {
+        super.onDestroyView();
+        display = null;
+        avg_display = null;
+        progressBar = null;
+    }
+
+    public void updateBPM() {
         setProgressBar(pointer +1);
 
         taps[pointer] = SystemClock.uptimeMillis();
@@ -119,12 +135,12 @@ public class TabTap extends Fragment {
     }
 
     private void publishBPM() {
-        Resources res = getResources();
+        Resources res = activity.getResources();
         display.setText(String.format("%.1f", currentBPM) + res.getText(R.string._bpm));
     }
 
     private void publishLastBPM() {
-        Resources res = getResources();
+        Resources res = activity.getResources();
         avg_display.setText(
                 res.getText(R.string.average_)
                         + String.format("%.1f", lastBPM)

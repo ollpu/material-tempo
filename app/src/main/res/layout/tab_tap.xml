@@ -59,8 +59,7 @@
                     android:layout_gravity="center"
                     android:longClickable="true"
                     android:ellipsize="start"
-                    android:textSize="52sp"
-                    android:onClick="updateBPM" />
+                    android:textSize="52sp" />
 
                 <ProgressBar
                     style="?android:attr/progressBarStyleHorizontal"
