@@ -13,9 +13,9 @@ import java.util.ArrayList;
 public class BPMInfo {
 
     TextView title, text;
-    MainActivity parent;
+    TabTap parent;
 
-    BPMInfo(TextView title, TextView text, MainActivity parent) {
+    BPMInfo(TextView title, TextView text, TabTap parent) {
         this.title = title;
         this.text = text;
         this.parent = parent;
