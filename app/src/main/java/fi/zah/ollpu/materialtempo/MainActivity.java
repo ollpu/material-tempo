@@ -31,7 +31,7 @@ public class MainActivity extends ActionBarActivity {
     int numTabs;
 
     private CharSequence[] getTabs() {
-        return new CharSequence[] { "Tap Tempo" };
+        return new CharSequence[] { "Tap Tempo", "Tempo II" };
     }
 
 

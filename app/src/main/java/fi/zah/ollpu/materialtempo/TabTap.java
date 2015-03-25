@@ -21,9 +21,7 @@ import android.widget.TextView;
  */
 public class TabTap extends Fragment {
 
-    public void setParent(MainActivity parent) {
-        activity = parent;
-    }
+
 
     Context context;
     MainActivity activity;

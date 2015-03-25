@@ -34,8 +34,10 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         switch(position) {
             case 0:
                 TabTap tab1 = new TabTap();
-                tab1.setParent(parent);
                 return tab1;
+            case 1:
+                TabTap tab2 = new TabTap();
+                return tab2;
             default:
                 return null;
         }
