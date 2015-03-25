@@ -21,7 +21,7 @@ import android.widget.TextView;
  */
 public class TabTap extends Fragment {
 
-
+    final static int TAP_CYCLE = 8;
 
     Context context;
     MainActivity activity;
@@ -53,7 +53,7 @@ public class TabTap extends Fragment {
         display = (TextView) getView().findViewById(R.id.display);
         avg_display = (TextView) getView().findViewById(R.id.avg_display);
         progressBar = (ProgressBar) getView().findViewById(R.id.tap_progress);
-        taps = new long[4];
+        taps = new long[TAP_CYCLE];
 
 
         inactivityTimer = new CountDownTimer(2000, 2000) {
@@ -83,6 +83,8 @@ public class TabTap extends Fragment {
                 updateBPM();
             }
         });
+
+        System.out.println("Pointer = " + pointer);
     }
 
     public void onDestroyView() {
@@ -98,7 +100,7 @@ public class TabTap extends Fragment {
         taps[pointer] = SystemClock.uptimeMillis();
         calculateBPM();
         pointer++;
-        if(pointer >= 4) {
+        if(pointer >= TAP_CYCLE) {
             pointer = 0;
             calculateAverageBPM();
         }
@@ -133,12 +135,12 @@ public class TabTap extends Fragment {
     }
 
     private void publishBPM() {
-        Resources res = activity.getResources();
+        Resources res = getView().getResources();
         display.setText(String.format("%.1f", currentBPM) + res.getText(R.string._bpm));
     }
 
     private void publishLastBPM() {
-        Resources res = activity.getResources();
+        Resources res = getView().getResources();
         avg_display.setText(
                 res.getText(R.string.average_)
                         + String.format("%.1f", lastBPM)

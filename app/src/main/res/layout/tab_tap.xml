@@ -68,7 +68,7 @@
                     android:id="@+id/tap_progress"
                     android:layout_gravity="center_horizontal|top"
                     android:progress="0"
-                    android:max="400"
+                    android:max="800"
                     android:indeterminate="false" />
 
                 <TextView

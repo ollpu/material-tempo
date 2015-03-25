@@ -23,7 +23,7 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="50dp"
+        android:textColor="@color/textPrimary"
         android:elevation="4dp"
         android:background="?attr/colorPrimary"
         android:layout_below="@+id/toolbar"
