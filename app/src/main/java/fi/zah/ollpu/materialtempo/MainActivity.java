@@ -31,7 +31,7 @@ public class MainActivity extends ActionBarActivity {
     int numTabs;
 
     private CharSequence[] getTabs() {
-        return new CharSequence[] { "Tap Tempo", "Tempo II" };
+        return new CharSequence[] { getResources().getString(R.string.tab_tempoTap), getResources().getString(R.string.tab_favs) };
     }
 
 
@@ -52,7 +52,7 @@ public class MainActivity extends ActionBarActivity {
         pager.setAdapter(adapter);
 
         tabs = (SlidingTabLayout) findViewById(R.id.tabs);
-        tabs.setDistributeEvenly(true);
+        tabs.setDistributeEvenly(false);
 
         tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override

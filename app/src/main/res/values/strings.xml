@@ -23,5 +23,9 @@
     <string name="average_">Average:\u0020</string>
     <string name="average_bpm">Average: - BPM</string>
 
+    <string name="tab_tempoTap">Tap Tempo</string>
+    <string name="tab_favs">Favorites</string>
+    <string name="tab_metronome">Metronome</string>
+
 
 </resources>

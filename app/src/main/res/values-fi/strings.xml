@@ -11,6 +11,8 @@
     <string name="italian_tempos">Italialaiset tempomerkit</string>
     <string name="list_italians">Lista Italialaisista tempomerkeistä</string>
     <string name="tap_here">Napauta</string>
-    <string name="undef_bpm">- BPM</string>
-    <string name="_bpm">\u0020BPM</string>
+
+    <string name="tab_favs">Suosikit</string>
+    <string name="tab_metronome">Metronomi</string>
+    <string name="tab_tempoTap">Naputa tempo</string>
 </resources>

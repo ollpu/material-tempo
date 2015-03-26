@@ -17,17 +17,17 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_checked="true">
         <bitmap android:src="@drawable/btn_star_mtrl_alpha"
-            android:tint="?attr/colorControlActivated" android:gravity="bottom|right"
+            android:tint="?attr/colorControlActivated" android:gravity="center"
             />
     </item>
     <item android:state_pressed="true">
         <bitmap android:src="@drawable/btn_star_mtrl_alpha"
-            android:tint="?attr/colorControlActivated" android:gravity="bottom|right"
+            android:tint="?attr/colorControlActivated" android:gravity="center"
             />
     </item>
     <item>
         <bitmap android:src="@drawable/btn_star_mtrl_alpha"
-            android:tint="?attr/colorControlNormal" android:gravity="bottom|right"
+            android:tint="?attr/colorControlNormal" android:gravity="center"
             />
     </item>
 </selector>
