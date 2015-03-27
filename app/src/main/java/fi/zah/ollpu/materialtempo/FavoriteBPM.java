@@ -9,22 +9,27 @@ import android.content.Context;
  * float accurate: The original BPM
  */
 public class FavoriteBPM {
+
+    String name;
+
     int simple;
     float accurate;
 
 
-    FavoriteBPM(int simple, float accurate) {
+    public FavoriteBPM(int simple, float accurate, String name) {
         this.simple = simple;
         this.accurate = accurate;
+        this.name = name;
     }
 
-    FavoriteBPM(float accurate) {
+    public FavoriteBPM(float accurate, String name) {
         this.accurate = accurate;
         simple = simplify(accurate);
+        this.name = name;
     }
 
     private static int simplify(float original) {
-        return Math.round((original - 2.5f) / 5) * 5;
+        return Math.round(original / 5) * 5;
     }
 
 
@@ -32,4 +37,14 @@ public class FavoriteBPM {
         int ofSimple = simplify(of);
 
     }*/
+
+
+    public String getName() { return name; }
+    public String getDescription() {
+        return
+            String.format("%.1f", accurate)
+            + " BPM ≈ "
+            + simple
+            + " BPM";
+}
 }

@@ -31,4 +31,7 @@
     <string name="action_delete">Delete</string>
 
 
+    <string name="sharedPref_favs">fi.zah.ollpu.materialtempo.favorites</string>
+
+
 </resources>

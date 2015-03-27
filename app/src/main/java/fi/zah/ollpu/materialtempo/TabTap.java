@@ -1,6 +1,7 @@
 package fi.zah.ollpu.materialtempo;
 
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -8,11 +9,13 @@ import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -24,12 +27,12 @@ public class TabTap extends Fragment {
     final static int TAP_CYCLE = 8;
 
     Context context;
-    MainActivity activity;
 
     long[] taps;
     int pointer = 0;
     TextView display;
     TextView avg_display;
+    CheckBox favBtn;
 
     ProgressBar progressBar;
 
@@ -42,7 +45,7 @@ public class TabTap extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.tab_tap,container,false);
+        return inflater.inflate(R.layout.tab_tap, container, false);
     }
 
     public void onActivityCreated(Bundle stuff) {
@@ -52,6 +55,7 @@ public class TabTap extends Fragment {
         display = (TextView) getView().findViewById(R.id.display);
         avg_display = (TextView) getView().findViewById(R.id.avg_display);
         progressBar = (ProgressBar) getView().findViewById(R.id.tap_progress);
+        favBtn = (CheckBox) getView().findViewById(R.id.favorite);
         taps = new long[TAP_CYCLE];
 
 
@@ -76,6 +80,13 @@ public class TabTap extends Fragment {
                 this
         );
 
+
+        favBtn.setOnClickListener(new View.OnClickListener() {
+           public void onClick(View v) {
+               favBtnPressed();
+           }
+        });
+
         final Button button = (Button) getView().findViewById(R.id.tap);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -85,12 +96,27 @@ public class TabTap extends Fragment {
 
         System.out.println("Pointer = " + pointer);
     }
+    private FragmentActivity activity;
+
+    @Override
+    public void onAttach(Activity activity) {
+        this.activity = (FragmentActivity) activity;
+        super.onAttach(activity);
+    }
+
+    public void favBtnPressed() {
+        if(favBtn.isChecked()) {
+            Favorites favFragment = (Favorites) activity.getSupportFragmentManager().instantiateItem(null, 1)
+            favFragment.setNewFavourite(lastBPM);
+        }
+    }
 
     public void onDestroyView() {
         super.onDestroyView();
         display = null;
         avg_display = null;
         progressBar = null;
+        favBtn = null;
     }
 
     public void updateBPM() {

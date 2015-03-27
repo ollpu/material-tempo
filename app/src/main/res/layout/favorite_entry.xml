@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/listText"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -19,8 +19,8 @@
         android:layout_marginTop="-12dp"
         android:text="512,6 BPM ≈ 510 BPM"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:layout_below="@+id/listText"
+        android:id="@+id/description"
+        android:layout_below="@+id/title"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -34,7 +34,9 @@
         android:drawableLeft="@drawable/delete"
         android:layout_alignTop="@+id/buttonEdit"
         android:layout_toStartOf="@+id/buttonEdit"
-        android:layout_toLeftOf="@+id/buttonEdit" />
+        android:layout_toLeftOf="@+id/buttonEdit"
+
+        />
 
     <Button
         android:layout_width="wrap_content"
@@ -45,9 +47,11 @@
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="6dp"
-        android:layout_alignBottom="@+id/textView"
+        android:layout_alignBottom="@+id/description"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:drawableLeft="@drawable/edit"/>
+        android:drawableLeft="@drawable/edit"
+
+        />
 
 </RelativeLayout>
