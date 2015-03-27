@@ -24,15 +24,30 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+
     <Button
-        android:layout_width="54dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:id="@+id/button"
+        android:minWidth="0dp"
+        android:layout_gravity="end"
+        android:id="@+id/buttonDelete"
+        android:drawableLeft="@drawable/delete"
+        android:layout_alignTop="@+id/buttonEdit"
+        android:layout_toStartOf="@+id/buttonEdit"
+        android:layout_toLeftOf="@+id/buttonEdit" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="0dp"
+        android:layout_gravity="end"
+        android:id="@+id/buttonEdit"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="6dp"
         android:layout_alignBottom="@+id/textView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:drawableLeft="@drawable/ic_settings_white_24dp"
-        style="?android:attr/borderlessButtonStyle"/>
+        android:drawableLeft="@drawable/edit"/>
 
 </RelativeLayout>

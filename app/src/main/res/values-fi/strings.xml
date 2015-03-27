@@ -15,4 +15,7 @@
     <string name="tab_favs">Suosikit</string>
     <string name="tab_metronome">Metronomi</string>
     <string name="tab_tempoTap">Naputa tempo</string>
+
+    <string name="action_edit">Muokkaa</string>
+    <string name="action_delete">Poista</string>
 </resources>

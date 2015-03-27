@@ -16,8 +16,8 @@ public class Favorites extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.favorites, container, false);
 
-        String[] values = new String[] { "Message1", "Message2", "Message3" };
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.favorite_entry, R.id.listText, values);
+        String[] values = new String[] { "Favorite #1", "Favorite #2", "Favorite #3" };
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), R.layout.favorite_entry, R.id.listText, values);
         setListAdapter(adapter);
         return rootView;
     }
