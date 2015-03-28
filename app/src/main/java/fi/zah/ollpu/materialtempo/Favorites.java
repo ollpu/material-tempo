@@ -18,8 +18,6 @@ import java.util.Map;
 public class Favorites extends ListFragment {
 
 
-
-
     SharedPreferences favoritesHook;
 
     FavoritesAdapter adapter;
@@ -50,8 +48,7 @@ public class Favorites extends ListFragment {
 
 
     private void loadFavorites() {
-        ArrayList<FavoriteBPM> favorites;
-        favorites = new ArrayList<>();
+        ArrayList<FavoriteBPM> favorites = new ArrayList<>();
 
         Map<String, ?> favMap = favoritesHook.getAll();
 
@@ -65,13 +62,41 @@ public class Favorites extends ListFragment {
     }
 
 
-    public void setNewFavourite(float val) {
+    public void setNewFavorite(float val) {
         SharedPreferences.Editor favEditor = favoritesHook.edit();
         favEditor.putFloat(getResources().getString(R.string.fav) + " #" + (favoritesHook.getAll().size() + 1), val);
         favEditor.commit();
 
         loadFavorites();
     }
+
+    /**
+     * Tells whether val BPM is already a favorite.
+     * @param val input BPM
+     * @return whether val is already set as favorite.
+     */
+    public boolean isFavorite(float val) {
+        ArrayList<Integer> entries = getSimplifiedArray();
+        int simplifiedVal = FavoriteBPM.simplify(val);
+
+        for(Integer simple : entries) {
+            if(simplifiedVal == simple) return true;
+        }
+
+        return false;
+    }
+
+
+    private ArrayList<Integer> getSimplifiedArray() {
+        ArrayList<Integer> toReturn = new ArrayList<>();
+
+        for(int i = 0; i < adapter.getCount(); i++) {
+            toReturn.add(adapter.getItem(i).simple);
+        }
+        return toReturn;
+    }
+
+
 
 
 

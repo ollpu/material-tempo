@@ -26,7 +26,7 @@ import android.widget.TextView;
  */
 public class TabTap extends Fragment {
 
-    final static int TAP_CYCLE = 8;
+
 
     Context context;
 
@@ -60,7 +60,7 @@ public class TabTap extends Fragment {
         avg_display = (TextView) getView().findViewById(R.id.avg_display);
         progressBar = (ProgressBar) getView().findViewById(R.id.tap_progress);
         favBtn = (CheckBox) getView().findViewById(R.id.favorite);
-        taps = new long[TAP_CYCLE];
+        taps = new long[Constants.TAP_CYCLE];
 
 
         inactivityTimer = new CountDownTimer(2000, 2000) {
@@ -106,12 +106,17 @@ public class TabTap extends Fragment {
 
     public void favBtnPressed() {
         if(favBtn.isChecked() && lastBPM != 0) {
-            ViewPagerAdapter adapter = (ViewPagerAdapter)
-                    ((ViewPager) getActivity().findViewById(R.id.pager)).getAdapter();
-            Favorites favFragment = null;
-            if(adapter != null) favFragment = (Favorites) adapter.getRegisteredFragment(1);
-            if(favFragment != null) favFragment.setNewFavourite(lastBPM);
+            Favorites favFragment = getFavFragment();
+            if(favFragment != null) favFragment.setNewFavorite(lastBPM);
         }
+    }
+
+    private Favorites getFavFragment() {
+        ViewPagerAdapter adapter = (ViewPagerAdapter)
+                ((ViewPager) getActivity().findViewById(R.id.pager)).getAdapter();
+        Favorites favFragment = null;
+        if(adapter != null) favFragment = (Favorites) adapter.getRegisteredFragment(Constants.FAV_TAB_LOCATION);
+        return favFragment;
     }
 
     public void onDestroyView() {

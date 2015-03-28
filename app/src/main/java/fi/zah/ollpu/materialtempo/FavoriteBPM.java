@@ -28,7 +28,7 @@ public class FavoriteBPM {
         this.name = name;
     }
 
-    private static int simplify(float original) {
+    public static int simplify(float original) {
         return Math.round(original / 5) * 5;
     }
 
