@@ -116,6 +116,7 @@ public class TabTap extends Fragment {
             Favorites favFragment = getFavFragment();
             if(favFragment != null) favFragment.removeFavorite(lastBPM);
         }
+        updateFavName(getFavFragment().isFavorite(lastBPM));
     }
 
     private Favorites getFavFragment() {
@@ -194,7 +195,12 @@ public class TabTap extends Fragment {
 
         String curFavName = getFavFragment().isFavorite(lastBPM);
         favBtn.setChecked(curFavName != null);
+        updateFavName(curFavName);
+    }
+
+    private void updateFavName(String curFavName) {
+        Resources res = getView().getResources();
         if(curFavName != null) favName.setText(res.getText(R.string.favs_name) + curFavName);
-            else favName.setText(res.getText(R.string.favs_name));
+            else favName.setText("");
     }
 }

@@ -2,4 +2,5 @@
 <resources>
     <string name="tab_favs">Favourites</string>
     <string name="fav">Favourite</string>
+    <string name="favs_name">"Favourite's name:\u0020"</string>
 </resources>
