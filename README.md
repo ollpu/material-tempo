@@ -13,4 +13,4 @@ Material Tempo is a rather simple application. It does a thing or two with music
    - Favorites are put in the favorites tab
    
 ###Travis-CI
-####master ![Travis-CI:branch-master-status](https://travis-ci.org/ollpu/material-tempo.svg?branch=master)
+####master [![Travis-CI:branch-master-status](https://travis-ci.org/ollpu/material-tempo.svg?branch=master)](https://travis-ci.org/ollpu/material-tempo)
