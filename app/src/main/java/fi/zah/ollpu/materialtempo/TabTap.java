@@ -133,7 +133,7 @@ public class TabTap extends Fragment {
         taps[pointer] = SystemClock.uptimeMillis();
         calculateBPM();
         pointer++;
-        if(pointer >= TAP_CYCLE) {
+        if(pointer >= Constants.TAP_CYCLE) {
             pointer = 0;
             calculateAverageBPM();
         }
