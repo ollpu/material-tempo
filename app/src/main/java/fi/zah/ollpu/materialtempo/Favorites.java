@@ -17,10 +17,7 @@ import java.util.Map;
  */
 public class Favorites extends ListFragment {
 
-    TabTap tapFragment;
-    public void setTapFragment(TabTap newFragment) {
-        tapFragment = newFragment;
-    }
+
 
 
     SharedPreferences favoritesHook;
@@ -77,9 +74,6 @@ public class Favorites extends ListFragment {
     }
 
 
-    public void removeFavorite(View view) {
 
-
-    }
 }
 
