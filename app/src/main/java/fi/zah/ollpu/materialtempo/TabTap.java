@@ -10,6 +10,8 @@ import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +40,8 @@ public class TabTap extends Fragment {
 
     float currentBPM;
     float lastBPM = 0;
+
+    float inconsistentLastBPM = 0;
 
     BPMInfo bpmInfo;
 
@@ -68,7 +72,7 @@ public class TabTap extends Fragment {
             public void onFinish() {
                 pointer = 0;
                 setProgressBar(0);
-                lastBPM = 0;
+                inconsistentLastBPM = 0;
             }
 
         };
@@ -97,14 +101,15 @@ public class TabTap extends Fragment {
         System.out.println("Pointer = " + pointer);
     }
 
-    Favorites favFragment;
-    public void setFavFragment(Favorites newFragment) {
-        favFragment = newFragment;
-    }
+
 
 
     public void favBtnPressed() {
-        if(favBtn.isChecked()) {
+        if(favBtn.isChecked() && lastBPM != 0) {
+            ViewPagerAdapter adapter = (ViewPagerAdapter)
+                    ((ViewPager) getActivity().findViewById(R.id.pager)).getAdapter();
+            Favorites favFragment = null;
+            if(adapter != null) favFragment = (Favorites) adapter.getRegisteredFragment(1);
             if(favFragment != null) favFragment.setNewFavourite(lastBPM);
         }
     }
@@ -152,8 +157,8 @@ public class TabTap extends Fragment {
     }
 
     private void calculateAverageBPM() {
-        if(lastBPM == 0) lastBPM = currentBPM;
-        lastBPM = (currentBPM + lastBPM) / 2;
+        if(inconsistentLastBPM == 0) lastBPM = currentBPM;
+        inconsistentLastBPM = (currentBPM + inconsistentLastBPM) / 2;
         publishLastBPM();
     }
 
@@ -166,10 +171,12 @@ public class TabTap extends Fragment {
         Resources res = getView().getResources();
         avg_display.setText(
                 res.getText(R.string.average_)
-                        + String.format("%.1f", lastBPM)
+                        + String.format("%.1f", inconsistentLastBPM)
                         + res.getText(R.string._bpm)
         );
-        bpmInfo.updateBPM(lastBPM);
+        bpmInfo.updateBPM(inconsistentLastBPM);
+
+        lastBPM = inconsistentLastBPM;
 
     }
 }

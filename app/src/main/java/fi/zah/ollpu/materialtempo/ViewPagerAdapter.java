@@ -3,6 +3,8 @@ package fi.zah.ollpu.materialtempo;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.SparseArray;
+import android.view.ViewGroup;
 
 
 /**
@@ -28,27 +30,16 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     }
 
-    private Favorites currentFavorites;
-    private TabTap currentTabTap;
+
 
 
     @Override
     public Fragment getItem(int position) {
         switch(position) {
             case 0:
-                currentTabTap = new TabTap();
-                if(currentFavorites != null) {
-                    currentTabTap.setFavFragment(currentFavorites);
-                    currentFavorites.setTapFragment(currentTabTap);
-                }
-                return currentTabTap;
+                return new TabTap();
             case 1:
-                currentFavorites = new Favorites();
-                if(currentTabTap != null) {
-                    currentFavorites.setTapFragment(currentTabTap);
-                    currentTabTap.setFavFragment(currentFavorites);
-                }
-                return currentFavorites;
+                return new Favorites();
 
             default:
                 return null;
@@ -68,5 +59,25 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return NumbOfTabs;
+    }
+
+
+    SparseArray<Fragment> registeredFragments = new SparseArray<>();
+
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+        Fragment fragment = (Fragment) super.instantiateItem(container, position);
+        registeredFragments.put(position, fragment);
+        return fragment;
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        registeredFragments.remove(position);
+        super.destroyItem(container, position, object);
+    }
+
+    public Fragment getRegisteredFragment(int position) {
+        return registeredFragments.get(position);
     }
 }
