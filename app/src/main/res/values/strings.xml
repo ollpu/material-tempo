@@ -14,9 +14,9 @@
     <string name="list_italians">List of Italian tempo markings</string>
 
     <string name="about_">About\u0020</string>
-    <string name="_bpm">\u0020BPM</string>
+    <string name="_bpm" translatable="false">\u0020BPM</string>
 
-    <string name="undef_bpm">- BPM</string>
+    <string name="undef_bpm" translatable="false">- BPM</string>
 
     <string name="about_bpm">About - BPM</string>
 
@@ -33,7 +33,7 @@
     <string name="action_delete">Delete</string>
 
 
-    <string name="sharedPref_favs">fi.zah.ollpu.materialtempo.favorites</string>
+    <string name="sharedPref_favs" translatable="false">fi.zah.ollpu.materialtempo.favorites</string>
 
     <string name="favs_name">"Favorite's name:\u0020"</string>
 
