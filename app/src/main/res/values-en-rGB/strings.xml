@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="tab_fav">Favourites</string>
+    <string name="tab_favs">Favourites</string>
+    <string name="fav">Favourite</string>
 </resources>

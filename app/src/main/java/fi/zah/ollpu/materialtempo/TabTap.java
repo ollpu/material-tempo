@@ -96,18 +96,16 @@ public class TabTap extends Fragment {
 
         System.out.println("Pointer = " + pointer);
     }
-    private FragmentActivity activity;
 
-    @Override
-    public void onAttach(Activity activity) {
-        this.activity = (FragmentActivity) activity;
-        super.onAttach(activity);
+    Favorites favFragment;
+    public void setFavFragment(Favorites newFragment) {
+        favFragment = newFragment;
     }
+
 
     public void favBtnPressed() {
         if(favBtn.isChecked()) {
-            Favorites favFragment = (Favorites) activity.getSupportFragmentManager().instantiateItem(null, 1)
-            favFragment.setNewFavourite(lastBPM);
+            if(favFragment != null) favFragment.setNewFavourite(lastBPM);
         }
     }
 

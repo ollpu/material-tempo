@@ -17,10 +17,17 @@ import java.util.Map;
  */
 public class Favorites extends ListFragment {
 
+    TabTap tapFragment;
+    public void setTapFragment(TabTap newFragment) {
+        tapFragment = newFragment;
+    }
+
 
     SharedPreferences favoritesHook;
 
-    ArrayList<FavoriteBPM> favorites;
+    FavoritesAdapter adapter;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,29 +40,34 @@ public class Favorites extends ListFragment {
 
         favoritesHook = getActivity().getSharedPreferences(getString(R.string.sharedPref_favs), Context.MODE_PRIVATE);
 
-        favorites = new ArrayList<>();
+
+        adapter = new FavoritesAdapter(getActivity(), R.id.title);
+
         loadFavorites();
 
-
-        FavoritesAdapter adapter = new FavoritesAdapter(getActivity(), R.id.title, favorites);
         setListAdapter(adapter);
     }
 
 
     private void loadFavorites() {
-        Map<String, ?> favMap = favoritesHook.getAll();
+        ArrayList<FavoriteBPM> favorites;
+        favorites = new ArrayList<>();
 
-        favorites.clear();
+        Map<String, ?> favMap = favoritesHook.getAll();
 
         for(Map.Entry<String, ?> entry : favMap.entrySet()) {
             favorites.add(new FavoriteBPM((Float) entry.getValue(), entry.getKey()));
         }
+
+        adapter.clear();
+        adapter.addAll(favorites);
+
     }
 
 
     public void setNewFavourite(float val) {
         SharedPreferences.Editor favEditor = favoritesHook.edit();
-        favEditor.putFloat(getString(R.id.favorite) + " #" + (favoritesHook.getAll().size() + 1), val);
+        favEditor.putFloat(getResources().getString(R.string.fav) + " #" + (favoritesHook.getAll().size() + 1), val);
         favEditor.commit();
 
         loadFavorites();

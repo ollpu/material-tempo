@@ -28,14 +28,28 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     }
 
+    private Favorites currentFavorites;
+    private TabTap currentTabTap;
+
 
     @Override
     public Fragment getItem(int position) {
         switch(position) {
             case 0:
-                return new TabTap();
+                currentTabTap = new TabTap();
+                if(currentFavorites != null) {
+                    currentTabTap.setFavFragment(currentFavorites);
+                    currentFavorites.setTapFragment(currentTabTap);
+                }
+                return currentTabTap;
             case 1:
-                return new Favorites();
+                currentFavorites = new Favorites();
+                if(currentTabTap != null) {
+                    currentFavorites.setTapFragment(currentTabTap);
+                    currentTabTap.setFavFragment(currentFavorites);
+                }
+                return currentFavorites;
+
             default:
                 return null;
         }

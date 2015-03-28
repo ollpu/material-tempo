@@ -18,4 +18,5 @@
 
     <string name="action_edit">Muokkaa</string>
     <string name="action_delete">Poista</string>
+    <string name="fav">Suosikki</string>
 </resources>
