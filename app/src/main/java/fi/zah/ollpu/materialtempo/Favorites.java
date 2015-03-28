@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by ollpu on 24.3.2015.
@@ -50,7 +51,7 @@ public class Favorites extends ListFragment {
     private void loadFavorites() {
         ArrayList<FavoriteBPM> favorites = new ArrayList<>();
 
-        Map<String, ?> favMap = favoritesHook.getAll();
+        TreeMap<String, ?> favMap = new TreeMap<>(favoritesHook.getAll());
 
         for(Map.Entry<String, ?> entry : favMap.entrySet()) {
             favorites.add(new FavoriteBPM((Float) entry.getValue(), entry.getKey()));
