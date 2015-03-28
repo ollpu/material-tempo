@@ -7,9 +7,9 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Map;
 
 /**
@@ -41,11 +41,14 @@ public class Favorites extends ListFragment {
         favoritesHook = getActivity().getSharedPreferences(getString(R.string.sharedPref_favs), Context.MODE_PRIVATE);
 
 
-        adapter = new FavoritesAdapter(getActivity(), R.id.title);
+        adapter = new FavoritesAdapter(getActivity(), R.id.title, favoritesHook);
 
         loadFavorites();
 
         setListAdapter(adapter);
+
+
+
     }
 
 
@@ -71,6 +74,12 @@ public class Favorites extends ListFragment {
         favEditor.commit();
 
         loadFavorites();
+    }
+
+
+    public void removeFavorite(View view) {
+
+
     }
 }
 
