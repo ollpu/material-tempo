@@ -108,14 +108,16 @@ public class TabTap extends Fragment {
 
 
     public void favBtnPressed() {
-        if(favBtn.isChecked() && lastBPM != 0) {
-            Favorites favFragment = getFavFragment();
-            if(favFragment != null) favFragment.setNewFavorite(lastBPM);
-        } else {
-            //isn't checked
-            Favorites favFragment = getFavFragment();
-            if(favFragment != null) favFragment.removeFavorite(lastBPM);
-        }
+        if(lastBPM != 0) {
+            if (favBtn.isChecked()) {
+                Favorites favFragment = getFavFragment();
+                if (favFragment != null) favFragment.setNewFavorite(lastBPM);
+            } else {
+                //isn't checked
+                Favorites favFragment = getFavFragment();
+                if (favFragment != null) favFragment.removeFavorite(lastBPM);
+            }
+        } else favBtn.setChecked(false);
         updateFavName(getFavFragment().isFavorite(lastBPM));
     }
 
