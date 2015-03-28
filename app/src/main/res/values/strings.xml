@@ -35,5 +35,7 @@
 
     <string name="sharedPref_favs">fi.zah.ollpu.materialtempo.favorites</string>
 
+    <string name="favs_name">Favorite's name:\u0020</string>
+
 
 </resources>

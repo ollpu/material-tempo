@@ -70,21 +70,36 @@ public class Favorites extends ListFragment {
         loadFavorites();
     }
 
-    /**
-     * Tells whether val BPM is already a favorite.
-     * @param val input BPM
-     * @return whether val is already set as favorite.
-     */
-    public boolean isFavorite(float val) {
-        ArrayList<Integer> entries = getSimplifiedArray();
+    public void removeFavorite(float val) {
+        Map<String, ?> entries = favoritesHook.getAll();
         int simplifiedVal = FavoriteBPM.simplify(val);
 
-        for(Integer simple : entries) {
-            if(simplifiedVal == simple) return true;
+
+        SharedPreferences.Editor editor = favoritesHook.edit();
+        for(Map.Entry<String, ?> entry : entries.entrySet()) {
+            if(FavoriteBPM.simplify((Float) entry.getValue()) == simplifiedVal) {
+                editor.remove(entry.getKey());
+            }
+        }
+        editor.commit();
+
+        loadFavorites();
+
+    }
+
+
+    public String isFavorite(float val) {
+        int simplifiedVal = FavoriteBPM.simplify(val);
+
+        for(int i = 0; i < adapter.getCount(); i++) {
+            FavoriteBPM item = adapter.getItem(i);
+            if(item.simple == simplifiedVal) return item.getName();
         }
 
-        return false;
+        return null;
     }
+
+
 
 
     private ArrayList<Integer> getSimplifiedArray() {

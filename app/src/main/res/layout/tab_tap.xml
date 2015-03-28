@@ -99,7 +99,7 @@
             android:id="@+id/info_card"
             android:layout_gravity="center_horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="120dp"
+            android:layout_height="160dp"
             card_view:cardCornerRadius="4dp"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_below="@id/tap_card"
@@ -128,6 +128,21 @@
                 android:layout_marginTop="48dp"
                 android:maxLines="4"
                 android:lines="4"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true" android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/favs_name"
+                android:id="@+id/favName"
+                android:layout_gravity="center_horizontal|bottom"
+                android:paddingTop="2dp"
+                android:paddingRight="@dimen/card_padding"
+                android:paddingLeft="@dimen/card_padding"
+                android:layout_marginBottom="@dimen/card_padding"
+                android:maxLines="1"
+                android:lines="1"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true" android:layout_alignParentLeft="true" />
 

@@ -1,7 +1,6 @@
 package fi.zah.ollpu.materialtempo;
 
 import android.animation.ObjectAnimator;
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -9,8 +8,6 @@ import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +17,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by ollpu on 24.3.2015.
@@ -35,6 +34,7 @@ public class TabTap extends Fragment {
     TextView display;
     TextView avg_display;
     CheckBox favBtn;
+    TextView favName;
 
     ProgressBar progressBar;
 
@@ -60,7 +60,10 @@ public class TabTap extends Fragment {
         avg_display = (TextView) getView().findViewById(R.id.avg_display);
         progressBar = (ProgressBar) getView().findViewById(R.id.tap_progress);
         favBtn = (CheckBox) getView().findViewById(R.id.favorite);
+        favName = (TextView) getView().findViewById(R.id.favName);
         taps = new long[Constants.TAP_CYCLE];
+
+        progressBar.setMax(Constants.TAP_CYCLE * 100);
 
 
         inactivityTimer = new CountDownTimer(2000, 2000) {
@@ -108,6 +111,10 @@ public class TabTap extends Fragment {
         if(favBtn.isChecked() && lastBPM != 0) {
             Favorites favFragment = getFavFragment();
             if(favFragment != null) favFragment.setNewFavorite(lastBPM);
+        } else {
+            //isn't checked
+            Favorites favFragment = getFavFragment();
+            if(favFragment != null) favFragment.removeFavorite(lastBPM);
         }
     }
 
@@ -125,6 +132,7 @@ public class TabTap extends Fragment {
         avg_display = null;
         progressBar = null;
         favBtn = null;
+        favName = null;
     }
 
     public void updateBPM() {
@@ -183,5 +191,10 @@ public class TabTap extends Fragment {
 
         lastBPM = inconsistentLastBPM;
 
+
+        String curFavName = getFavFragment().isFavorite(lastBPM);
+        favBtn.setChecked(curFavName != null);
+        if(curFavName != null) favName.setText(res.getText(R.string.favs_name) + curFavName);
+            else favName.setText(res.getText(R.string.favs_name));
     }
 }
