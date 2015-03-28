@@ -18,4 +18,5 @@ android:
     - addon-google_apis-google-22
     - extra-android-support
 
-    
+    - sys-img-armeabi-v7a-android-22
+    - sys-img-x86-android-17
