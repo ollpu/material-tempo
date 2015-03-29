@@ -20,4 +20,5 @@
     <string name="action_delete">Poista</string>
     <string name="fav">Suosikki</string>
     <string name="favs_name">"Suosikin nimi:\u0020"</string>
+    <string name="favs_empty">"Täällä ei ole mitään!\nVoit lisätä suosikin painamalla tähteä Napauta -näkymässä."</string>
 </resources>

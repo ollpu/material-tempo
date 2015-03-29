@@ -37,5 +37,7 @@
 
     <string name="favs_name">"Favorite's name:\u0020"</string>
 
+    <string name="favs_empty">"There's nothing here!\nYou can add a favorite by pressing the star in the Tap Tempo -tab."</string>
+
 
 </resources>

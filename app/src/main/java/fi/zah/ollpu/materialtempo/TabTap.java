@@ -1,7 +1,6 @@
 package fi.zah.ollpu.materialtempo;
 
 import android.animation.ObjectAnimator;
-import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -18,16 +17,16 @@ import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 /**
  * Created by ollpu on 24.3.2015.
+ * Tab, where BPM is tapped and information about it is displayed.
  */
 public class TabTap extends Fragment {
 
 
 
-    Context context;
+
 
     long[] taps;
     int pointer = 0;
@@ -200,7 +199,7 @@ public class TabTap extends Fragment {
         updateFavName(curFavName);
     }
 
-    private void updateFavName(String curFavName) {
+    public void updateFavName(String curFavName) {
         Resources res = getView().getResources();
         if(curFavName != null) favName.setText(res.getText(R.string.favs_name) + curFavName);
             else favName.setText("");

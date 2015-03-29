@@ -1,8 +1,9 @@
 package fi.zah.ollpu.materialtempo;
 
-import android.content.ClipData;
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.List;
 
 /**
  * Created by ollpu on 27.3.2015.
+ * Adapter for Favorites, extends ArrayAdapter
  */
 public class FavoritesAdapter extends ArrayAdapter<FavoriteBPM> {
 
@@ -60,8 +61,8 @@ public class FavoritesAdapter extends ArrayAdapter<FavoriteBPM> {
                       @Override
                       public void onClick(View v) {
                           FavoriteBPM item = getItem(position);
-                          remove(item);
                           removeFromSharedPref(item.name);
+                          getFavFragment().loadFavorites();
                       }
                     }
                 );
@@ -74,6 +75,14 @@ public class FavoritesAdapter extends ArrayAdapter<FavoriteBPM> {
 
     }
 
+
+    private Favorites getFavFragment() {
+        ViewPagerAdapter adapter = (ViewPagerAdapter)
+                ((ViewPager) ((Activity) getContext()).findViewById(R.id.pager)).getAdapter();
+        Favorites favFragment = null;
+        if(adapter != null) favFragment = (Favorites) adapter.getRegisteredFragment(Constants.FAV_TAB_LOCATION);
+        return favFragment;
+    }
 
     private void removeFromSharedPref(String key) {
         SharedPreferences.Editor editor = favoritesHook.edit();

@@ -2,7 +2,6 @@
 
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/scrollView"
@@ -22,6 +21,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>
+
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="match_parent"
+        android:textColor="#888888"
+        android:text="There's nothing here!\nYou can add a favorite by pressing the star in the Tap Tempo -tab."
+        android:layout_margin="@dimen/card_padding"
+        android:layout_height="wrap_content"/>
+
 
 
 </RelativeLayout>

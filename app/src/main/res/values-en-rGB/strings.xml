@@ -4,4 +4,5 @@
     <string name="tab_favs">Favourites</string>
     <string name="fav">Favourite</string>
     <string name="favs_name">"Favourite's name:\u0020"</string>
+    <string name="favs_empty">"There's nothing here!\nYou can add a favourite by pressing the star in the Tap Tempo -tab."</string>
 </resources>
