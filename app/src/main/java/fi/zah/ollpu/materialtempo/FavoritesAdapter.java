@@ -58,11 +58,12 @@ public class FavoritesAdapter extends ArrayAdapter<FavoriteBPM> {
             }
 
             if (edit != null) {
+                final FavoritesAdapter me = this;
                 edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         FavoriteBPM item = getItem(position);
-                        item.edit();
+                        item.edit(getContext(), me, favoritesHook);
                     }
                 });
             }

@@ -19,6 +19,8 @@
     <string name="undef_bpm" translatable="false">- BPM</string>
 
     <string name="about_bpm">About - BPM</string>
+    <string name="bpm_" translatable="false">BPM:</string>
+    <string name="bpm" translatable="false">BPM</string>
 
     <string name="average_">Average:\u0020</string>
     <string name="average_bpm">Average: - BPM</string>
@@ -36,11 +38,13 @@
     <string name="sharedPref_favs" translatable="false">fi.zah.ollpu.materialtempo.favorites</string>
 
     <string name="favs_name">"Favorite's name:\u0020"</string>
+    <string name="name_of_fav">Name of favorite</string>
 
     <string name="favs_empty">"There's nothing here!\nYou can add a favorite by pressing the star in the Tap Tempo -tab."</string>
 
     <string name="edit_fav">Edit Favorite</string>
     <string name="cancel">Cancel</string>
+    <string name="name_">Name:</string>
     <string name="ok">OK</string>
 
 

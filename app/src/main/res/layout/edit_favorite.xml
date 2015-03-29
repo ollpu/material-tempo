@@ -8,23 +8,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Name:" />
+        android:text="@string/name_" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editName" />
+        android:inputType="text"
+        android:id="@+id/editName"
+        android:hint="@string/name_of_fav"
+        android:textColor="#000000"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="BPM:" />
+        android:text="@string/bpm_" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
+        android:hint="@string/bpm"
+        android:textColor="#000000"
         android:ems="10"
         android:id="@+id/editBPM" />
 

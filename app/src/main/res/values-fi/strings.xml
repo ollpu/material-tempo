@@ -21,4 +21,9 @@
     <string name="fav">Suosikki</string>
     <string name="favs_name">"Suosikin nimi:\u0020"</string>
     <string name="favs_empty">"Täällä ei ole mitään!\nVoit lisätä suosikin painamalla tähteä Napauta -näkymässä."</string>
+    <string name="cancel">Peruuta</string>
+    <string name="edit_fav">Muokkaa suosikkia</string>
+    <string name="name_">Nimi:</string>
+    <string name="name_of_fav">Suosikin nimi</string>
+    <string name="ok">OK</string>
 </resources>

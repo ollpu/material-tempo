@@ -3,6 +3,7 @@ package fi.zah.ollpu.materialtempo;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,12 @@ public class FavoriteBPM {
         this.name = name;
     }
 
+    private float reassignBPM(float newBPM) {
+        accurate = newBPM;
+        simple = simplify(accurate);
+        return accurate;
+    }
+
     public static int simplify(float original) {
         return Math.round(original / 5) * 5;
     }
@@ -54,7 +61,7 @@ public class FavoriteBPM {
             + " BPM";
     }
 
-    public void edit(Context context) {
+    public void edit(Context context, final FavoritesAdapter adapter, final SharedPreferences sharedPref) {
         Resources res = context.getResources();
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
@@ -64,7 +71,9 @@ public class FavoriteBPM {
         alertDialogBuilder.setView(promptView);
 
         final EditText inputName = (EditText) promptView.findViewById(R.id.editName);
+        inputName.setText(name);
         final EditText inputBPM = (EditText) promptView.findViewById(R.id.editBPM);
+        inputBPM.setText(String.format("%.2f", accurate).replace(",", "."));
 
         alertDialogBuilder
                 .setTitle(res.getString(R.string.edit_fav))
@@ -72,8 +81,14 @@ public class FavoriteBPM {
                 .setPositiveButton(res.getString(R.string.ok),
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                inputBPM.getText();
-                                inputName.getText();
+
+                                SharedPreferences.Editor editor = sharedPref.edit();
+                                editor.remove(name);
+                                name = inputName.getText().toString();
+                                editor.putFloat(name, reassignBPM(Float.parseFloat(inputBPM.getText().toString())));
+                                editor.apply();
+
+                                adapter.notifyDataSetChanged();
                             }
                         })
                 .setNegativeButton(res.getString(R.string.cancel),
