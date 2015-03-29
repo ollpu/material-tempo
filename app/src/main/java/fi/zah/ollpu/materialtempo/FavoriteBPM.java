@@ -1,6 +1,12 @@
 package fi.zah.ollpu.materialtempo;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
 
 /**
  * Created by ollpu on 22.3.2015.
@@ -46,5 +52,40 @@ public class FavoriteBPM {
             + " BPM ≈ "
             + simple
             + " BPM";
-}
+    }
+
+    public void edit(Context context) {
+        Resources res = context.getResources();
+
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        View promptView = layoutInflater.inflate(R.layout.edit_favorite, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setView(promptView);
+
+        final EditText inputName = (EditText) promptView.findViewById(R.id.editName);
+        final EditText inputBPM = (EditText) promptView.findViewById(R.id.editBPM);
+
+        alertDialogBuilder
+                .setTitle(res.getString(R.string.edit_fav))
+                .setCancelable(false)
+                .setPositiveButton(res.getString(R.string.ok),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                inputBPM.getText();
+                                inputName.getText();
+                            }
+                        })
+                .setNegativeButton(res.getString(R.string.cancel),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,	int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+        AlertDialog alertD = alertDialogBuilder.create();
+
+        alertD.show();
+
+    }
 }

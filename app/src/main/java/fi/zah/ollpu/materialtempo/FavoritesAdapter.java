@@ -47,6 +47,7 @@ public class FavoritesAdapter extends ArrayAdapter<FavoriteBPM> {
             TextView title = (TextView) v.findViewById(R.id.title);
             TextView desc = (TextView) v.findViewById(R.id.description);
             Button delete = (Button) v.findViewById(R.id.buttonDelete);
+            Button edit = (Button) v.findViewById(R.id.buttonEdit);
 
             if (title != null) {
                 title.setText(p.getName());
@@ -54,6 +55,16 @@ public class FavoritesAdapter extends ArrayAdapter<FavoriteBPM> {
 
             if (desc != null) {
                 desc.setText(p.getDescription());
+            }
+
+            if (edit != null) {
+                edit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FavoriteBPM item = getItem(position);
+                        item.edit();
+                    }
+                });
             }
 
             if (delete != null) {

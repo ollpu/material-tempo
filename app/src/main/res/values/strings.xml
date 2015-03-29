@@ -39,5 +39,9 @@
 
     <string name="favs_empty">"There's nothing here!\nYou can add a favorite by pressing the star in the Tap Tempo -tab."</string>
 
+    <string name="edit_fav">Edit Favorite</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+
 
 </resources>
