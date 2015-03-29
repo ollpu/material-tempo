@@ -31,7 +31,11 @@ public class MainActivity extends ActionBarActivity {
     int numTabs;
 
     private CharSequence[] getTabs() {
-        return new CharSequence[] { getResources().getString(R.string.tab_tempoTap), getResources().getString(R.string.tab_favs) };
+        return new CharSequence[] {
+                getResources().getString(R.string.tab_tempoTap),
+                getResources().getString(R.string.tab_favs),
+                getResources().getString(R.string.tab_metronome)
+        };
     }
 
 

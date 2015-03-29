@@ -40,6 +40,8 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
                 return new TabTap();
             case 1:
                 return new Favorites();
+            case 2:
+                return new Metronome();
 
             default:
                 return null;
