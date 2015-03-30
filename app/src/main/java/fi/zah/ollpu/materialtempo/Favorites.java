@@ -75,18 +75,36 @@ public class Favorites extends ListFragment {
 
     private void refreshFavInfo() {
         TabTap tap = getTapFragment();
-        String curFavName = isFavorite(tap.lastBPM);
-        tap.favBtn.setChecked(curFavName != null);
-        tap.updateFavName(curFavName);
+        if(tap != null) {
+            String curFavName = isFavorite(tap.lastBPM);
+            tap.favBtn.setChecked(curFavName != null);
+            tap.updateFavName(curFavName);
+        }
     }
 
 
     public void setNewFavorite(float val) {
         SharedPreferences.Editor favEditor = favoritesHook.edit();
-        favEditor.putFloat(getResources().getString(R.string.fav) + " #" + (favoritesHook.getAll().size() + 1), val);
+        favEditor.putFloat(findAvailableFavoriteName(
+                getResources().getString(R.string.fav),
+                favoritesHook
+        ), val);
         favEditor.commit();
 
         loadFavorites();
+    }
+
+    //Tries to find first available Favorite name up from sharedPref size
+    private String findAvailableFavoriteName(String fav, SharedPreferences sharedPref) {
+        int index = sharedPref.getAll().size() + 1;
+
+        while(true) {
+            String attempt = fav + " #" + index;
+            if(!sharedPref.contains(attempt)) {
+                return attempt;
+            } else index++;
+        }
+
     }
 
     public void removeFavorite(float val) {
