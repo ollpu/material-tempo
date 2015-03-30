@@ -47,5 +47,8 @@
     <string name="name_">Name:</string>
     <string name="ok">OK</string>
 
+    <string name="favEdit_overwrite_title">Overwrite existing favorite?</string>
+    <string name="favEdit_overwrite_message">A favorite with this name already exists.</string>
+
 
 </resources>
