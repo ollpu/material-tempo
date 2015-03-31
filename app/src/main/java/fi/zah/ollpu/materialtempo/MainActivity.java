@@ -67,6 +67,10 @@ public class MainActivity extends ActionBarActivity {
 
         tabs.setViewPager(pager);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.lg_toolbar);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
 
 
 
