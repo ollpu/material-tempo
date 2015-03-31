@@ -1,0 +1,64 @@
+This document includes the MIT License, and a moral license written by me, Roope Salmi.
+
+MIT License (MIT)
+
+Copyright (c) 2015 Roope Salmi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+End of MIT License (MIT)
+
+                          Moral license
+
+Although you are allowed to not,
+I hope that you use this software under these terms:
+
+  1. Adding nothing to it, and publishing it
+    If you copy this software, I want you to add your own work and effort to it.
+    If none to minimal changes are made, you should credit me appropriately.
+    Example of appropriate credit:
+      This software was originally written by Roope Salmi (ollpu),
+      {link to project repository on GitHub if available}
+      
+  2. Making substantial changes to it
+    If you make larger changes, as in changing the appearance or adding a new
+    feature to it, I'd still appreciate the appropriate credit as mentioned in term 1.
+    If you make some nice changes to the software, I want you to publish your
+    version of the software with an MIT license or similar. I greatly appreciate
+    your modifications, and possibly want to implement those changes in my version
+    of the software as well.
+    
+   2.1. Using a similar layout or concept, but making most of it yourself
+    If you make a similar software with similar features, layout and/or concepts,
+    It's all yours. If you've made it, it's yours. If you do however,
+    use some code from this project, I'm completely fine with that as well,
+    although I hope to receive the appropriate credit (refer to term 1).
+    
+  3. Monetized content
+    If this piece of software happens to have some kind of a revenue source for me,
+    such as selling it for a fee or implementing advertizements,
+    I hope that you do not recompile the software without these revenue sources.
+    If the software is being sold for a fee, the worst thing you could do,
+    is selling it on, but claiming all profit yourself.
+
+Keep in mind, that this moral license is only a moral license. You are still allowed
+to do almost whatever you want with it (refer to the MIT License above), but if you
+want to be my friend, you might want to abide to these terms.
+  If you have anything to ask, hit me up on email, or Telegram, @ollpu.
+
