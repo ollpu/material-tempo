@@ -145,6 +145,7 @@ public class FavoriteBPM {
                 editPreset(context, adapter, sharedPref, newName, valueText);
             case 2:
                 submitEdit(newName, valueText, editor, adapter);
+
         }
     }
 

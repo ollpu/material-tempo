@@ -102,4 +102,6 @@ public class FavoritesAdapter extends ArrayAdapter<FavoriteBPM> {
         editor.apply();
     }
 
+
+
 }
