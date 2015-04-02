@@ -61,7 +61,7 @@ public class FavoriteBPM {
             + " BPM";
     }
 
-    public void edit(final Context context, final FavoritesAdapter adapter, final SharedPreferences sharedPref) {
+    public void edit(Context context, FavoritesAdapter adapter, SharedPreferences sharedPref) {
         editPreset(context, adapter, sharedPref, name, String.format("%.2f", accurate).replace(",", "."));
 
     }
@@ -80,6 +80,8 @@ public class FavoriteBPM {
         final EditText inputBPM = (EditText) promptView.findViewById(R.id.editBPM);
         inputBPM.setText(vl);
 
+        final FavoriteBPM me = this;
+
         alertDialogBuilder
                 .setTitle(res.getString(R.string.edit_fav))
                 .setCancelable(false)
@@ -87,11 +89,11 @@ public class FavoriteBPM {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 SharedPreferences.Editor editor = sharedPref.edit();
-                                editor.remove(name);
+
                                 String newName = inputName.getText().toString();
                                 String valueText = inputBPM.getText().toString();
-                                if (!sharedPref.contains(newName)) {
-                                    submitEdit(newName, valueText, editor, adapter);
+                                if (!sharedPref.contains(newName) || newName.equals(name)) {
+                                    submitEdit(newName, valueText, editor, adapter, false);
                                 } else edit_sameName(context, adapter, sharedPref, newName, valueText);
                             }
                         })
@@ -108,14 +110,11 @@ public class FavoriteBPM {
     }
 
 
-    private int edit_sameName(final Context context, final FavoritesAdapter adapter, final SharedPreferences sharedPref, final String newName, final String valueText) {
+    private void edit_sameName(final Context context, final FavoritesAdapter adapter, final SharedPreferences sharedPref, final String newName, final String valueText) {
         final Resources res = context.getResources();
 
-        final FavoriteBPM me = this;
-
-        final int[] toReturn = new int[1];
-        toReturn[0] = 0;
         new AlertDialog.Builder(context)
+                .setCancelable(false)
                 .setTitle(res.getText(R.string.favEdit_overwrite_title))
                 .setMessage(res.getText(R.string.favEdit_overwrite_message))
                 .setPositiveButton(res.getString(R.string.ok),
@@ -134,7 +133,6 @@ public class FavoriteBPM {
                             }
                         })
                 .show();
-        return toReturn[0];
     }
 
 
@@ -143,16 +141,31 @@ public class FavoriteBPM {
         switch(result) {
             case 1:
                 editPreset(context, adapter, sharedPref, newName, valueText);
+            break;
             case 2:
-                submitEdit(newName, valueText, editor, adapter);
+                submitEdit(newName, valueText, editor, adapter, true);
+            break;
 
         }
     }
 
-    private void submitEdit(String newName, String valueText, SharedPreferences.Editor editor, FavoritesAdapter adapter) {
+    private void submitEdit(String newName, String valueText, SharedPreferences.Editor editor, FavoritesAdapter adapter, boolean overwrite) {
+        editor.remove(name);
         name = newName;
         editor.putFloat(name, reassignBPM(Float.parseFloat(valueText)));
         editor.apply();
+
+        //Clear all other objects with the same name if overwrite
+        if(overwrite) {
+            for(int i = 0; i < adapter.getCount(); i++) {
+                FavoriteBPM thisItem = adapter.getItem(i);
+                if(thisItem.name.equals(name) && thisItem != this) {
+                    adapter.remove(thisItem);
+                }
+            }
+        }
+
+
 
         adapter.notifyDataSetChanged();
     }
