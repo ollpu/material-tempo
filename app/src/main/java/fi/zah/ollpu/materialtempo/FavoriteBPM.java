@@ -11,8 +11,7 @@ import android.widget.EditText;
 
 /**
  * Created by ollpu on 22.3.2015.
- * int simple: A simplification of the original BPM, used as key in SharedPreferences
- *  - Also used to match similar BPMs into one
+ * int simple: A simplification of the original BPM, used to recognize similar BPMs as on
  * float accurate: The original BPM
  */
 public class FavoriteBPM {
